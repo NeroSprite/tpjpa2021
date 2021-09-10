@@ -6,6 +6,13 @@ import javax.persistence.PersistenceContext;
 
 public class JpaTest {
 
+	private EntityManager manager;
+
+	public JpaTest(EntityManager manager) {
+		this.manager = manager;
+	}
+	/**
+
 	/**
 	 * @param args
 	 */
@@ -13,11 +20,12 @@ public class JpaTest {
 
 		EntityManager manager = EntityManagerHelper.getEntityManager();
 		EntityTransaction tx = manager.getTransaction();
+		JpaTest test = new JpaTest(manager);
 		tx.begin();
 
 
 		try {
-
+			test.createUsers();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -28,6 +36,17 @@ public class JpaTest {
 		EntityManagerHelper.closeEntityManagerFactory();
 		//		factory.close();
 	}
+
+	private void createUsers() {
+		int numOfEmployees = manager.createQuery("Select u From User u", User.class).getResultList().size();
+		if (numOfEmployees == 0) {
+			System.out.println("Insertion");
+			manager.persist(new User("Antoine","antdegas@gmail.com","1234"));
+			manager.persist(new User("Paul","paul@gmail.com","sdeefsdkf"));
+
+		}
+	}
+
 
 
 }
