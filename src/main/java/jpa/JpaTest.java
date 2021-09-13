@@ -1,8 +1,9 @@
 package jpa;
 
+import jpa.domain.User;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceContext;
 
 public class JpaTest {
 
@@ -46,6 +47,14 @@ public class JpaTest {
 
 		}
 	}
+
+	//TODO Ajouter des méthodes DAO
+	//Nouvelle
+	//Nouveau Worker
+	//Afficher les créneaux disponible à partir d'un URL
+	//Crée un nouveau apppointment
+	//Réserver un apppointment
+	//
 
 
 
