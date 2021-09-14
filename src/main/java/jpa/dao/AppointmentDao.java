@@ -60,9 +60,9 @@ public class AppointmentDao extends AbstractJpaDao<Long, Appointment>{
     }
 
 
-    public List<Appointment> getAppointment(Worker worker){
-        String texte = "select a from Appointment a where a.organizer = 'worker' ";
-        Query query = manager.createQuery(texte);
+    public List getAppointment(Worker worker){
+        Query query = this.manager.createNamedQuery("Appointment.findByWorker");
+        query.setParameter("worker", worker);
         return query.getResultList();
 
     }

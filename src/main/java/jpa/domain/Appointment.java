@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 
 @Entity
+@NamedQuery(name="Appointment.findByWorker", query="SELECT a FROM Appointment a WHERE a.organizer = :worker")
 public class Appointment implements Serializable {
 
 

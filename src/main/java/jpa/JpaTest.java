@@ -61,8 +61,9 @@ public class JpaTest {
 
 		//Liste des Appointment de Dr Raoult
 		List<Appointment> listeAppointment = appointmentDao.getAppointment(prof1);
-		for(Appointment a : listeAppointment){
-			log.info(a.getTitle());
+		log.info("Réunion de " + prof1 + ": ");
+		for( Appointment a : listeAppointment){
+			log.info(a.getTitle() + " / " + a.getStart() + " - " + a.getEnd());
 		}
 
 		manager.close();
