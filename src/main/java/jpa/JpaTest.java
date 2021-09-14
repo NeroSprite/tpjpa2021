@@ -33,6 +33,8 @@ public class JpaTest {
 		EntityManager manager = EntityManagerHelper.getEntityManager();
 		UserDao userDao = new UserDao(manager);
 		AppointmentDao appointmentDao = new AppointmentDao(manager);
+
+
 		User user1 = new User("Paul","antdegazzeaeazeaze.com","1234");
 		userDao.save(user1);
 		User user2 = new User("Antoine","antdegas@gmail.com","1234");
@@ -41,14 +43,21 @@ public class JpaTest {
 		Worker prof1 = new Worker("Dr Raoult","raoult@bondocteur.com","Manger1PommeParJour","Marabout");
 		userDao.save(prof1);
 
+
+		//Test de Named Querry
+		List<User> allUser = userDao.allUser();
+		for(User u : allUser){
+			log.info(u.getName() + " - " + u.getMail());
+		}
+
 		//Création d'un appointment, ajout d'un organisateur et ajout d'un participant
 		Appointment appointment1 = new Appointment("Réunion1",prof1);
-		appointmentDao.createAppointment("Réunion1",prof1);
+		appointmentDao.save(appointment1);
 		appointmentDao.addParticipant(appointment1, user1);
 
 
 		//Ajout d'un user sur un appointment non dispo
-		appointmentDao.addParticipant(appointment1,user2);
+		//appointmentDao.addParticipant(appointment1,user2);
 
 		//Liste des Appointment de Dr Raoult
 		List<Appointment> listeAppointment = appointmentDao.getAppointment(prof1);

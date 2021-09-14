@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@NamedQuery(name="User.allUser",query="SELECT u FROM User u")
 @Inheritance(strategy=
         InheritanceType.SINGLE_TABLE)
 public class User implements Serializable {

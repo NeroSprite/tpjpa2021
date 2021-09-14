@@ -4,6 +4,8 @@ import jpa.domain.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import java.util.List;
 
 public class UserDao extends AbstractJpaDao<Long, User> {
 
@@ -12,6 +14,11 @@ public class UserDao extends AbstractJpaDao<Long, User> {
     public UserDao(EntityManager manager){
         super(User.class);
         this.manager = manager;
+    }
+
+    public List<User> allUser(){
+        Query query = this.manager.createNamedQuery("User.allUser");
+        return query.getResultList();
     }
 
     /*
