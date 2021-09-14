@@ -1,11 +1,12 @@
 package jpa.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy=
         InheritanceType.SINGLE_TABLE)
-public class User {
+public class User implements Serializable {
 
     private Long id;
     private String name;

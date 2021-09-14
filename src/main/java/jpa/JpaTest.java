@@ -34,12 +34,12 @@ public class JpaTest {
 		UserDao userDao = new UserDao(manager);
 		AppointmentDao appointmentDao = new AppointmentDao(manager);
 		User user1 = new User("Paul","antdegazzeaeazeaze.com","1234");
-		userDao.addUser(user1);
+		userDao.save(user1);
 		User user2 = new User("Antoine","antdegas@gmail.com","1234");
-		userDao.addUser(user2);
-		userDao.addUser(new User("Paul","paul@gmail.com","sdeefsdkf"));
+		userDao.save(user2);
+		userDao.save(new User("Paul","paul@gmail.com","sdeefsdkf"));
 		Worker prof1 = new Worker("Dr Raoult","raoult@bondocteur.com","Manger1PommeParJour","Marabout");
-		userDao.addUser(prof1);
+		userDao.save(prof1);
 
 		//Création d'un appointment, ajout d'un organisateur et ajout d'un participant
 		Appointment appointment1 = new Appointment("Réunion1",prof1);
