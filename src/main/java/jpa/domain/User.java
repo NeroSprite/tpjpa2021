@@ -11,7 +11,7 @@ public class User {
     private String name;
     private String mail;
     private String password;
-    private String url;
+
 
     public User() {
     }
@@ -57,12 +57,4 @@ public class User {
         this.password = password;
     }
 
-    @GeneratedValue
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }

@@ -3,18 +3,23 @@ package jpa.domain;
 import java.sql.Date;
 import javax.persistence.*;
 
+
+
 @Entity
 public class Appointment {
 
+
     private Long id;
+    private String url;
     private String title;
-    private User organizer;
+    private Worker organizer;
     private User participant;
     private Date start;
     private Date end;
 
-    public Appointment(String title) {
+    public Appointment(String title, Worker organizer) {
         this.title = title;
+        this.organizer = organizer;
     }
 
     public Appointment() {
@@ -31,6 +36,15 @@ public class Appointment {
         this.id = id;
     }
 
+    @GeneratedValue
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = this.title + this.id + url;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -40,11 +54,11 @@ public class Appointment {
     }
 
     @OneToOne
-    public User getOrganizer() {
+    public Worker getOrganizer() {
         return organizer;
     }
 
-    public void setOrganizer(User organizer) {
+    public void setOrganizer(Worker organizer) {
         this.organizer = organizer;
     }
 
