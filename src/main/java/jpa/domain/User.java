@@ -4,13 +4,17 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@NamedQuery(name="User.allUser",query="SELECT u FROM User u")
+@NamedQueries({
+        @NamedQuery(name="User.allUser",query="SELECT u FROM User u") ,
+        @NamedQuery(name="User.findByEmail",query="SELECT u FROM User u WHERE u.mail = :mail")
+})
 @Inheritance(strategy=
         InheritanceType.SINGLE_TABLE)
 public class User implements Serializable {
 
     private Long id;
     private String name;
+    @Column(unique=true)
     private String mail;
     private String password;
 

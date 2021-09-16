@@ -21,6 +21,12 @@ public class UserDao extends AbstractJpaDao<Long, User> {
         return query.getResultList();
     }
 
+    public List<User> findByEmail(String mail){
+        Query query = this.manager.createNamedQuery("User.findByEmail");
+        query.setParameter("mail", mail);
+        return query.getResultList();
+    }
+
     /*
     public void addUser(User user){
         EntityTransaction tx = manager.getTransaction();
