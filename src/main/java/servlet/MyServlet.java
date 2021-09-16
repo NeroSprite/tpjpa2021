@@ -18,7 +18,7 @@ public class MyServlet extends HttpServlet {
             throws ServletException, IOException {
 
         PrintWriter p = new PrintWriter(resp.getOutputStream());
-        p.print("Hello world");
+        p.print("Hello test");
         p.flush();
 
     }
